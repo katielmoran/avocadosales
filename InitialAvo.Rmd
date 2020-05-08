@@ -1,0 +1,33 @@
+---
+title: "Initial Data Analysis"
+author: "Katie Moran"
+date: "29/04/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+##The Data
+In pursuit of identifying a data set for the *"Data Analysis & Visualisation"* module, I quickly found a lot of statistical databases are quite difficult to digest. In my time of need, I turned to the most trusted friend of the milenial, <span style="color:green"> *the avocado.* </span> This data set made the most sense to me and I wanted to add a degree of light-hearted novelty to my work in these times of doom and gloom. So here I present, **avocado prices in America between 2015 - 2018**. Enjoy.
+
+
+```{r message=FALSE, echo=FALSE}
+
+library(tidyverse)
+
+Avo2 <- read.csv("avocado2.csv", header = TRUE, sep = ",")
+price <- c(Avo2$AveragePrice)
+sold <- c(Avo2$TotalVolume)
+year <- c(Avo2$Year)
+date <- c(Avo2$Date)
+p1 <- ggplot(Avo2, aes(x = year, y = price))
+p2 <- p1 + geom_point(color = "green", size = 2)
+p3 <- p2 + ggtitle("Avocado Prices Between 2015 - 2018, USA") + xlab("Year") + ylab("Prices($)")
+p3
+```
+
+The total mean price of <span style="color:green"> *avocados* </span> in USD, between 2015-2018 is: `r mean(price)` .
+
+##Future Pursuits
+The future goals of analysing this data set is to plot total sales of <span style="color:green"> avocados </span> per year against the average price each year. In doing so, identifying whether price is correlated withe the humble <span style="color:green"> avocado's </span> rise in populatirty and sales.
+
